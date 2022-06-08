@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "alligatorshop": "apps/alligatorshop",
+    "alligatorshop-e2e": "apps/alligatorshop-e2e"
+  }
+}
