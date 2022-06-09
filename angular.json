@@ -6,7 +6,9 @@
         "admin-e2e": "apps/admin-e2e",
         "alligatorshop": "apps/alligatorshop",
         "alligatorshop-e2e": "apps/alligatorshop-e2e",
+        "orders": "libs/orders",
         "products": "libs/products",
-        "ui": "libs/ui"
+        "ui": "libs/ui",
+        "users": "libs/users"
     }
 }

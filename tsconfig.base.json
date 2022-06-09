@@ -15,8 +15,10 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@alligatorspace/orders": ["libs/orders/src/index.ts"],
             "@alligatorspace/products": ["libs/products/src/index.ts"],
-            "@alligatorspace/ui": ["libs/ui/src/index.ts"]
+            "@alligatorspace/ui": ["libs/ui/src/index.ts"],
+            "@alligatorspace/users": ["libs/users/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]
