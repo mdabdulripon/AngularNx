@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'alligatorspace-root',
+  selector: 'alligatorshop-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
