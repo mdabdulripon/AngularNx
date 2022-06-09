@@ -15,6 +15,7 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@alligatorspace/products": ["libs/products/src/index.ts"],
             "@alligatorspace/ui": ["libs/ui/src/index.ts"]
         }
     },
