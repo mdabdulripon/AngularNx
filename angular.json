@@ -1,8 +1,10 @@
 {
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
-  "version": 2,
-  "projects": {
-    "alligatorshop": "apps/alligatorshop",
-    "alligatorshop-e2e": "apps/alligatorshop-e2e"
-  }
+    "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+    "version": 2,
+    "projects": {
+        "admin": "apps/admin",
+        "admin-e2e": "apps/admin-e2e",
+        "alligatorshop": "apps/alligatorshop",
+        "alligatorshop-e2e": "apps/alligatorshop-e2e"
+    }
 }
