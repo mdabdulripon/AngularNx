@@ -5,6 +5,7 @@
         "admin": "apps/admin",
         "admin-e2e": "apps/admin-e2e",
         "alligatorshop": "apps/alligatorshop",
-        "alligatorshop-e2e": "apps/alligatorshop-e2e"
+        "alligatorshop-e2e": "apps/alligatorshop-e2e",
+        "ui": "libs/ui"
     }
 }
