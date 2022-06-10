@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'alligatorspace-root',
+    selector: 'admin-root',
     templateUrl: './app.component.html'
 })
 export class AppComponent {
