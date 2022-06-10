@@ -4,6 +4,9 @@
 @import './base/mixins.scss';
 @import './base/configure.scss';
 
+// Third party 
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 // Pages 
 @import './apps/shop/pages/home-page.scss';
 @import './apps/shop/pages/products-list.scss';
