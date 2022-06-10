@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterModule, Routes } from '@angular/router';
+
+import { AppComponent } from './app.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { StoreModule } from '@ngrx/store';
 
+
+import { MatSliderModule } from '@angular/material/slider';
 
 const routes: Routes = [
     { 
@@ -20,7 +25,13 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent],
-    imports: [BrowserModule, RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' })],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
+        StoreModule.forRoot({}, {}),
+        MatSliderModule
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })
