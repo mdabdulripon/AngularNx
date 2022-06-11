@@ -1,0 +1,21 @@
+<div class="admin-page">
+    <mat-card class="admin-page__card">
+        <h3>{{ !editMode ? 'Create New Category' : 'Edit Category' }}</h3>
+
+        <form [formGroup]="form">
+            <div class="inline-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Category Name</mat-label>
+                    <input matInput placeholder="Category Name" formControlName="name" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Category Icon</mat-label>
+                    <input matInput placeholder="Category Icon" formControlName="icon" />
+                </mat-form-field>
+            </div>
+        </form>
+        <button mat-raised-button class="mr-20" color="primary" (click)="onSubmit()"><i class="material-icons-outlined">add</i> Save</button>
+        <button mat-raised-button class="mr-20" color="warn" (click)="onCancel()"><i class="material-icons-outlined">close</i> Cancel</button>
+    </mat-card>
+</div>
