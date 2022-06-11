@@ -17,7 +17,7 @@
         height: 100%;
 
         .logo {
-            padding: 20px;
+            padding: 20px 0;
             width: 100%;
             text-align: center;
             color: var(--bs-white);
@@ -60,6 +60,11 @@
         }
     }
 
-
-    
+    &-page {
+        padding: 15px;
+        
+        &__table {
+            margin-top: 15px;
+        }
+    }
 }

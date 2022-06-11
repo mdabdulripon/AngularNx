@@ -104,3 +104,4 @@ Visit [Nx Cloud](https://nx.app/) to learn more.
 -   Create Lib: `npx nx g @nrwl/workspace:lib ui`
 -   Generate component to the app `nx generate component shared/footer --project=alligatorshop`
 -   Generate component to the lin `npx nx generate @schematics/angular:component slider --project=ui --style=scss --export --prefix=ui`
+- Generate Service `npx nx generate @schematics/angular:service services/categories --project=products`
