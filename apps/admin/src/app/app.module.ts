@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
-import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
+import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
+import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { CategoriesService } from '@alligatorspace/products';
 
 import { MatSliderModule } from '@angular/material/slider';
