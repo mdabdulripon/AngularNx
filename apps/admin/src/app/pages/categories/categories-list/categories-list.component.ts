@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
     templateUrl: './categories-list.component.html'
 })
 export class CategoriesListComponent implements OnInit {
-    displayedColumns: string[] = ['id', 'name', 'icon', 'action'];
+    displayedColumns: string[] = ['name', 'icon', 'color', 'action'];
     dataSource: ICategory[] = [];
 
     constructor(

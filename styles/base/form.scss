@@ -2,3 +2,12 @@
     margin-left: 20px;
 }
 
+               
+.inline-form {
+    // min-width: 150px;
+    // max-width: 500px;
+    width: 100%;
+    &__full-width {
+        width: 48%;
+    }
+}

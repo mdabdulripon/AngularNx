@@ -1,0 +1,62 @@
+<div class="admin-page">
+    <mat-card class="admin-page__card">
+        <h3>{{ !editMode ? 'Create New Product' : 'Edit Product' }}</h3>
+
+        <form [formGroup]="form">
+            <div class="inline-form">
+                <mat-form-field appearance="outline" class="inline-form__full-width">
+                    <mat-label>Product Name</mat-label>
+                    <input matInput placeholder="Product Name" formControlName="name" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="inline-form__full-width">
+                    <mat-label>Brand</mat-label>
+                    <input matInput placeholder="Brand" formControlName="brand" />
+                </mat-form-field>
+            </div>
+
+            <div class="inline-form">
+                <mat-form-field appearance="outline" class="inline-form__full-width">
+                    <mat-label>Price</mat-label>
+                    <input matInput placeholder="Price" formControlName="price" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="inline-form__full-width">
+                    <mat-label>Quantity</mat-label>
+                    <input matInput placeholder="Quantity" formControlName="countInStock" />
+                </mat-form-field>
+            </div>
+
+            <div class="inline-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let cate of categories" [value]="cate.id">{{ cate.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-checkbox class="ml-20" formControlName="isFeatured">Is Featured!</mat-checkbox>
+            </div>
+
+            <div class="inline-form">
+                <mat-form-field appearance="outline" class="inline-form__full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput placeholder="Product description..." formControlName="description"></textarea>
+                </mat-form-field>
+            </div>
+
+            <!-- TODO: CREATE A SINGLE IMAGE UPLOAD Component (reuseable component)  -->
+            <mat-card class="mb-20">
+                <label class="d-block mb-10">Main Image</label>
+                <input type="file" accept="image/*" (change)="onImageUpload($event)" />
+
+                <div class="d-block width-150 mt-20">
+                    <img class="width-100p" [src]="imageDisplay" alt="" />
+                </div>
+            </mat-card>
+        </form>
+        <button mat-raised-button class="mr-20" color="primary" (click)="onSubmit()"><i class="material-icons-outlined">add</i> Save</button>
+        <button mat-raised-button class="mr-20" color="warn" (click)="onCancel()"><i class="material-icons-outlined">close</i> Cancel</button>
+    </mat-card>
+</div>

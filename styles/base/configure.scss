@@ -22,3 +22,46 @@ ul {
 table {
     width: 100%;
 }
+
+
+
+
+
+
+// util styling......
+.d {
+    &-block {
+        display: block;
+    }
+    &-flex {
+        display: flex;
+    }
+    &-inline {
+        display: inline;
+    }
+    &-inline-block {
+        display: inline-block;
+    }
+}
+
+
+.width {
+    &-50 {
+        width: 50px;
+    }
+    &-100 {
+        width: 100px;
+    }
+    &-150 {
+        width: 150px;
+    }
+    &-200 {
+        width: 200px;
+    }
+    &-50p {
+        width: 50%;
+    }
+    &-100p {
+        width: 100%;
+    }
+}

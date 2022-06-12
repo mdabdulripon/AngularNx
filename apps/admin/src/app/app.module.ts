@@ -13,6 +13,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { CategoriesService } from '@alligatorspace/products';
+import { ProductFormComponent } from './pages/products/product-form/product-form.component';
+import { ProductListComponent } from './pages/products/product-list/product-list.component';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
@@ -20,9 +22,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
-const MatModules = [MatSliderModule, MatCardModule, MatButtonModule, MatTableModule, MatFormFieldModule, MatInputModule];
+
+
+const MatModules = [MatSliderModule, MatCardModule, MatButtonModule, MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule];
 
 const routes: Routes = [
     {
@@ -32,13 +38,16 @@ const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'categories', component: CategoriesListComponent },
             { path: 'categories/form', component: CategoriesFormComponent },
-            { path: 'categories/form/:id', component: CategoriesFormComponent }
+            { path: 'categories/form/:id', component: CategoriesFormComponent },
+            { path: 'products', component: ProductListComponent },
+            { path: 'products/form', component: ProductFormComponent },
+            { path: 'products/form/:id', component: ProductFormComponent },
         ]
     }
 ];
 
 @NgModule({
-    declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesListComponent, CategoriesFormComponent],
+    declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesListComponent, CategoriesFormComponent, ProductFormComponent, ProductListComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,

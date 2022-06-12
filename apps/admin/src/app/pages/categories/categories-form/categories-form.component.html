@@ -13,6 +13,11 @@
                     <mat-label>Category Icon</mat-label>
                     <input matInput placeholder="Category Icon" formControlName="icon" />
                 </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Category Color</mat-label>
+                    <input matInput placeholder="Category Color" formControlName="color" />
+                </mat-form-field>
             </div>
         </form>
         <button mat-raised-button class="mr-20" color="primary" (click)="onSubmit()"><i class="material-icons-outlined">add</i> Save</button>

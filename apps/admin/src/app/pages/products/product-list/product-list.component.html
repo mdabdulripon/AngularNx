@@ -1,0 +1,33 @@
+<div class="admin-page">
+    <mat-card class="admin-page__card">
+        <button routerLink="form" mat-raised-button color="primary"><i class="material-icons-outlined">add</i> Add New Product</button>
+    </mat-card>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 admin-page__table">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="brand">
+            <th mat-header-cell *matHeaderCellDef>Brand</th>
+            <td mat-cell *matCellDef="let element">{{ element.brand }}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+                <button class="mr-15" mat-raised-button color="warn" (click)="deleteProduct(element.id)"><i class="material-icons-outlined">delete</i></button>
+                <button mat-raised-button color="primary" (click)="editProduct(element.id)"><i class="material-icons-outlined">edit</i></button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</div>
