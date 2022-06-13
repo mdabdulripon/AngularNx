@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class UsersListComponent implements OnInit {
 
-	displayedColumns: string[] = ['name', 'email', 'isAdmin', 'action'];
+	displayedColumns: string[] = ['name', 'email', 'isAdmin', 'country', 'action'];
 	dataSource: IUser[] = [];
 
 	constructor(
