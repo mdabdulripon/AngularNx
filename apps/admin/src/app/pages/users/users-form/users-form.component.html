@@ -1,0 +1,68 @@
+<div class="admin-page">
+    <mat-card class="admin-page__card">
+        <h3>{{ !editMode ? 'Create New Category' : 'Edit Category' }}</h3>
+        <form [formGroup]="form">
+            <div class="inline-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Name" formControlName="name" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" formControlName="email" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hidePassword ? 'text' : 'password'" formControlName="password" />
+                    <button mat-icon-button matSuffix (click)="togglePassword()" aria-label="Hide password">
+                        <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+
+            <div class="inline-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Phone</mat-label>
+                    <input matInput placeholder="Phone" formControlName="phone" />
+                </mat-form-field>
+                <mat-checkbox class="ml-20" formControlName="isAdmin">Is Admin!</mat-checkbox>
+            </div>
+
+            <div class="inline-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Street</mat-label>
+                    <input matInput placeholder="Street" formControlName="street" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Apartment</mat-label>
+                    <input matInput placeholder="Apartment" formControlName="apartment" />
+                </mat-form-field>
+            </div>
+
+            <div class="inline-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Zip</mat-label>
+                    <input matInput placeholder="Zip" formControlName="zip" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="City" formControlName="city" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Country</mat-label>
+                    <mat-select formControlName="country">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </form>
+        <button mat-raised-button class="mr-20" color="primary" (click)="onSubmit()"><i class="material-icons-outlined">add</i> Save</button>
+        <button mat-raised-button class="mr-20" color="warn" (click)="onCancel()"><i class="material-icons-outlined">close</i> Cancel</button>
+    </mat-card>
+</div>

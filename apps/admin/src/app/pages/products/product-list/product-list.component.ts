@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
     displayedColumns: string[] = ['name', 'brand', 'price', 'action'];
-    /*['category', 'quantity', 'description', 'shortDescription', 'image', 'isFeatured']**/ 
     dataSource: IProduct[] = [];
 
     constructor(

@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
     templateUrl: './categories-form.component.html'
 })
 export class CategoriesFormComponent implements OnInit {
-
     form: FormGroup;
     isSubmitted = false;
     editMode = false; 
@@ -40,7 +39,7 @@ export class CategoriesFormComponent implements OnInit {
                 this.currentCategoryId = params['id'];
                 this.categoriesService.getCategory(params['id']).subscribe( res => {
                     this.categoryForm['name'].setValue(res.name);
-                    this.categoryForm['icon'].setValue(res.name);
+                    this.categoryForm['icon'].setValue(res.icon);
                     this.categoryForm['color'].setValue(res.color);
                 })
             }
