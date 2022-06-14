@@ -12,4 +12,5 @@ export interface IUser {
     city?: string;
     state?: string;
     country?: string;
+    // TODO Removes everything and have a ways to store address. 
 }

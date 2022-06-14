@@ -18,6 +18,8 @@ import { ProductListComponent } from './pages/products/product-list/product-list
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { UsersService } from '@alligatorspace/users';
+import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
+import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
 
 // TODO: Move this to a separate module  
 import { MatSliderModule } from '@angular/material/slider';
@@ -30,6 +32,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
+
 
 const MatModules = [
     MatSliderModule,
@@ -40,7 +53,16 @@ const MatModules = [
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule,
+    MatSlideToggleModule,
+    MatRadioModule,
+    MatPaginatorModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatChipsModule,
+    MatAutocompleteModule
 ];
 
 const routes: Routes = [
@@ -58,6 +80,8 @@ const routes: Routes = [
             { path: 'users', component: UsersListComponent },
             { path: 'users/form', component: UsersFormComponent },
             { path: 'users/form/:id', component: UsersFormComponent },
+            { path: 'orders', component: OrdersListComponent },
+            { path: 'orders/:id', component: OrdersDetailComponent },
         ]
     }
 ];
@@ -73,7 +97,9 @@ const routes: Routes = [
         ProductFormComponent,
         ProductListComponent,
         UsersFormComponent,
-        UsersListComponent
+        UsersListComponent,
+        OrdersListComponent,
+        OrdersDetailComponent
     ],
     imports: [
         BrowserModule,
