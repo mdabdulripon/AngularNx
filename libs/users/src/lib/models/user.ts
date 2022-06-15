@@ -4,8 +4,8 @@ export interface IUser {
     password?: string;
     email: string;
     phone?: string;
-    token?: string;
-    isAdmin?: true;
+    token?: string | null | undefined;
+    isAdmin?: boolean;
     street?: string;
     apartment?: string;
     zip?: string;

@@ -1,0 +1,16 @@
+
+
+.auth {
+    background-image: linear-gradient(235deg, #565867, #191a25);
+    height: 100%;
+    &-panel {
+        width: 500px;
+        height: 400px;
+        background-color: var(--bs-white);
+        position: absolute;
+        // to take it to the middle we need substruct by 1/2 of its width 
+        left: calc(50% - 250px);
+        // to take it to the middle we need substruct by 1/2 of its height 
+        top: calc(50% - 200px);
+    }
+}

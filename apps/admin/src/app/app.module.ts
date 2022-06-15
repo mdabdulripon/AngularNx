@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ShellComponent } from './shared/shell/shell.component';
@@ -17,7 +18,7 @@ import { ProductFormComponent } from './pages/products/product-form/product-form
 import { ProductListComponent } from './pages/products/product-list/product-list.component';
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
-import { UsersService } from '@alligatorspace/users';
+import { AuthGuard, UsersModule, UsersService } from '@alligatorspace/users';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
 
@@ -26,7 +27,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -69,6 +69,7 @@ const routes: Routes = [
     {
         path: '',
         component: ShellComponent,
+        canActivate: [AuthGuard],
         children: [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'categories', component: CategoriesListComponent },
@@ -108,7 +109,8 @@ const routes: Routes = [
         ReactiveFormsModule,
         RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
         StoreModule.forRoot({}, {}),
-        MatModules
+        UsersModule,
+        ...MatModules
     ],
     providers: [CategoriesService, ProductsService, UsersService],
     bootstrap: [AppComponent]

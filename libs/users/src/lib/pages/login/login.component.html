@@ -1,0 +1,23 @@
+<div class="auth">
+    <div class="auth-panel pr-20 pl-20 pt-20 pb-20">
+        <h3>Login</h3>
+        <form [formGroup]="form">
+            <mat-form-field class="width-100p" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Enter your Username" formControlName="email" />
+            </mat-form-field>
+
+            <mat-form-field class="width-100p" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hidePassword ? 'text' : 'password'" placeholder="Enter your Password" formControlName="password" />
+                <button mat-icon-button matSuffix (click)="togglePassword()" aria-label="Hide password">
+                    <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <div class="d-flex d-flex-justify-content-end">
+                <button mat-raised-button color="primary" class="btn-lg" (click)="onSubmit()">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
