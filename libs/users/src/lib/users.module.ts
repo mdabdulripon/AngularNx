@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { LoginComponent } from './pages/login/login.component';
 
-
 // TODO: Move this to a separate module  
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';

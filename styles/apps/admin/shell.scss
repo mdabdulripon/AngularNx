@@ -49,10 +49,9 @@
                             margin-top: 0px;
                             float: left;
                         }
-
-                        // &.logout {
-                        //     color: #C00;
-                        // }
+                        &.logout {
+                            cursor: pointer;
+                        }
                     }
 
                 }
