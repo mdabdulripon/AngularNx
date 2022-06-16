@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { LocalStorageService } from '../../services/local-storage.service';
-import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'users-login',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder, 
-    private usersService: UsersService,
+    private router: Router,
     private authService: AuthService,
     private localStorageService: LocalStorageService,
     ) { }
@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
       // TODO: store token in cookies.
       if (user) {
         this.localStorageService.setToken(user.token!);
+        this.router.navigate(['/']);
       }
     }, (error: HttpErrorResponse) => {
       console.log(error);
