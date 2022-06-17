@@ -1,11 +1,12 @@
 // Base 
-@import './base/colors.scss';
+@import './base/bootstrap.scss';
 @import './base/fonts.scss';
 @import './base/mixins.scss';
 @import './base/configure.scss';
 
 // Third party 
-// @import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~material-icons/iconfont/material-icons.css';
 
 // Pages 
 @import './apps/shop/pages/home-page.scss';
@@ -17,3 +18,19 @@
 
 // libs
 @import './libs/ui/ui.scss';
+@import './libs/products/product.search.scss';
+
+
+
+
+
+
+.masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("./../../alligatorspace/apps/alligatorshop/src/assets/bg-masthead.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}

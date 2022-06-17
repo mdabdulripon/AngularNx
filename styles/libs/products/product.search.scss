@@ -1,0 +1,13 @@
+.product-search {
+    display: flex;
+    width: 275px;
+    height: 35px;
+    position: relative;
+
+    &__icon {
+        position: absolute;
+        top: 6px;
+        right: 15px;
+        color: var(--bs-blue);
+    }
+}

@@ -1,5 +1,6 @@
 // Base 
-@import './base/colors.scss';
+// @import './base/colors.scss';
+@import './base/bootstrap.scss';
 @import './base/fonts.scss';
 @import './base/mixins.scss';
 @import './base/configure.scss';
@@ -7,7 +8,6 @@
 @import './base/spacing.scss';
 
 // Third party 
-// @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~material-icons/iconfont/material-icons.css';
 
