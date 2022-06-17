@@ -1,2 +1,46 @@
-<p>dashboard works!</p>
-<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+<div class="admin-page">
+    <mat-card class="admin-page__card">
+        <h3>
+            {{ pageTitle }}: <span class="fs-12">{{ subPageTitle }}</span>
+        </h3>
+
+        <div class="dashboard-container mt-20">
+            <div class="dashboard-container_card order-card">
+                <div class="dashboard-container_card-item">
+                    <div class="mt-5 ml-20">
+                        <i class="material-icons-outlined d-icon">shopping_cart</i>
+                        <span class="d-name">Order</span>
+                    </div>
+                    <span class="d-number">25</span>
+                </div>
+            </div>
+            <div class="dashboard-container_card account-card">
+                <div class="dashboard-container_card-item">
+                    <div class="mt-5 ml-20">
+                        <i class="material-icons-outlined d-icon">people_alt</i>
+                        <span class="d-name">Account</span>
+                    </div>
+                    <span class="d-number">25</span>
+                </div>
+            </div>
+            <div class="dashboard-container_card product-card">
+                <div class="dashboard-container_card-item">
+                    <div class="mt-5 ml-20">
+                        <i class="material-icons-outlined d-icon">next_week</i>
+                        <span class="d-name">Order</span>
+                    </div>
+                    <span class="d-number">25</span>
+                </div>
+            </div>
+            <div class="dashboard-container_card total-sales">
+                <div class="dashboard-container_card-item">
+                    <div class="mt-5 ml-20">
+                        <i class="material-icons-outlined d-icon">currency_exchange</i>
+                        <span class="d-name">Order</span>
+                    </div>
+                    <span class="d-number">25</span>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>

@@ -5,7 +5,12 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
+
+    pageTitle = 'Dashboard';
+    subPageTitle = 'items'
     constructor() {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        console.log(this.pageTitle);
+    }
 }
