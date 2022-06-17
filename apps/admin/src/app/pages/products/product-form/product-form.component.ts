@@ -1,13 +1,14 @@
 import { CategoriesService, ICategory, ProductsService } from '@alligatorspace/products';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'admin-product-form',
   templateUrl: './product-form.component.html'
 })
-export class ProductFormComponent implements OnInit {
+export class ProductFormComponent implements OnInit, OnDestroy {
 
   	form: FormGroup;
     isSubmitted = false;
@@ -15,7 +16,8 @@ export class ProductFormComponent implements OnInit {
     currentProductId: string;
     categories: ICategory[];
     imageDisplay: string | ArrayBuffer;
-
+    endSubs$: Subject<any> = new Subject();
+    
     get productForm() {
         return this.form.controls;
     }
@@ -26,7 +28,7 @@ export class ProductFormComponent implements OnInit {
         private productService: ProductsService,
         private router: Router,
         private route: ActivatedRoute ) {}
-
+    
     ngOnInit(): void {
         this.form = this.formBuilder.group({
             name: ['', Validators.required ],
@@ -42,30 +44,41 @@ export class ProductFormComponent implements OnInit {
         this.checkEditMode();
     }
 
+    ngOnDestroy(): void {
+        this.endSubs$.complete();
+        this.endSubs$.unsubscribe();
+    }
+
 
     getCategories() {
-        this.categoriesService.getCategories().subscribe(res => {
-            this.categories = res;
-        })
+        this.categoriesService.getCategories()
+            .pipe(takeUntil(this.endSubs$))
+            .subscribe(res => {
+                this.categories = res;
+            })
     }
 
     checkEditMode() {
-        this.route.params.subscribe( params => {
-            if (params['id']) {
-                this.editMode = true;
-                this.currentProductId = params['id'];
-                this.productService.getProduct(params['id']).subscribe( res => {
-                    this.productForm['name'].setValue(res.name);
-                    this.productForm['category'].setValue(res.category.id);
-                    this.productForm['brand'].setValue(res.brand);
-                    this.productForm['price'].setValue(res.price);
-                    this.productForm['countInStock'].setValue(res.countInStock);
-                    this.productForm['description'].setValue(res.description);
-                    this.productForm['isFeatured'].setValue(res.isFeatured);
-                    this.imageDisplay = res.image;
-                })
-            }
-        })
+        this.route.params
+            .pipe(takeUntil(this.endSubs$))
+            .subscribe( params => {
+                if (params['id']) {
+                    this.editMode = true;
+                    this.currentProductId = params['id'];
+                    this.productService.getProduct(params['id'])
+                        .pipe(takeUntil(this.endSubs$))
+                        .subscribe( res => {
+                            this.productForm['name'].setValue(res.name);
+                            this.productForm['category'].setValue(res.category.id);
+                            this.productForm['brand'].setValue(res.brand);
+                            this.productForm['price'].setValue(res.price);
+                            this.productForm['countInStock'].setValue(res.countInStock);
+                            this.productForm['description'].setValue(res.description);
+                            this.productForm['isFeatured'].setValue(res.isFeatured);
+                            this.imageDisplay = res.image;
+                        })
+                }
+            })
     }
 
     onSubmit(): void {
@@ -85,7 +98,9 @@ export class ProductFormComponent implements OnInit {
     }
 
     createCategory(productData: FormData) {
-        this.productService.createProduct(productData).subscribe((res) => {
+        this.productService.createProduct(productData)
+        .pipe(takeUntil(this.endSubs$))
+        .subscribe((res) => {
             if(res) {
                 // this.form.reset();
                 console.log(`success`);
@@ -96,7 +111,9 @@ export class ProductFormComponent implements OnInit {
     }
 
     updateCategory(productData: FormData) {
-        this.productService.updateProduct(productData, this.currentProductId).subscribe((res) => {
+        this.productService.updateProduct(productData, this.currentProductId)
+        .pipe(takeUntil(this.endSubs$))
+        .subscribe((res) => {
             if(res) {
                 console.log(`success`);
             }

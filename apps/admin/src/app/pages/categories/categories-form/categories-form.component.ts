@@ -1,17 +1,19 @@
 import { CategoriesService, ICategory } from '@alligatorspace/products';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'admin-categories-form',
     templateUrl: './categories-form.component.html'
 })
-export class CategoriesFormComponent implements OnInit {
+export class CategoriesFormComponent implements OnInit, OnDestroy {
     form: FormGroup;
     isSubmitted = false;
     editMode = false; 
     currentCategoryId: string;
+    endSubs$: Subject<any> = new Subject();
 
     get categoryForm() {
         return this.form.controls;
@@ -22,7 +24,7 @@ export class CategoriesFormComponent implements OnInit {
         private categoriesService: CategoriesService,
         private router: Router,
         private route: ActivatedRoute ) {}
-
+    
     ngOnInit(): void {
         this.form = this.formBuilder.group({
             name: ['', Validators.required ],
@@ -32,18 +34,27 @@ export class CategoriesFormComponent implements OnInit {
         this.checkEditMode();
     }
 
+    ngOnDestroy(): void {
+        this.endSubs$.complete();
+        this.endSubs$.unsubscribe();
+    }
+
     checkEditMode() {
-        this.route.params.subscribe( params => {
-            if (params['id']) {
-                this.editMode = true;
-                this.currentCategoryId = params['id'];
-                this.categoriesService.getCategory(params['id']).subscribe( res => {
-                    this.categoryForm['name'].setValue(res.name);
-                    this.categoryForm['icon'].setValue(res.icon);
-                    this.categoryForm['color'].setValue(res.color);
-                })
-            }
-        })
+        this.route.params
+            .pipe(takeUntil(this.endSubs$))
+            .subscribe( params => {
+                if (params['id']) {
+                    this.editMode = true;
+                    this.currentCategoryId = params['id'];
+                    this.categoriesService.getCategory(params['id'])
+                        .pipe(takeUntil(this.endSubs$))
+                        .subscribe( res => {
+                            this.categoryForm['name'].setValue(res.name);
+                            this.categoryForm['icon'].setValue(res.icon);
+                            this.categoryForm['color'].setValue(res.color);
+                        })
+                }
+            })
     }
 
     onSubmit(): void {
@@ -65,24 +76,28 @@ export class CategoriesFormComponent implements OnInit {
     }
 
     createCategory(category: ICategory, ) {
-        this.categoriesService.createCategories(category).subscribe((res) => {
-            if(res) {
-                // this.form.reset();
-                console.log(`success`);
-            }
-        }, (err) => {
-            console.log(`err`, err);
-        });
+        this.categoriesService.createCategories(category)
+            .pipe(takeUntil(this.endSubs$))
+            .subscribe((res) => {
+                if(res) {
+                    // this.form.reset();
+                    console.log(`success`);
+                }
+            }, (err) => {
+                console.log(`err`, err);
+            });
     }
 
     updateCategory(category: ICategory) {
-        this.categoriesService.updateCategories(category).subscribe((res) => {
-            if(res) {
-                console.log(`success`);
-            }
-        }, (err) => {
-            console.log(`err`, err);
-        });
+        this.categoriesService.updateCategories(category)
+            .pipe(takeUntil(this.endSubs$))
+            .subscribe((res) => {
+                if(res) {
+                    console.log(`success`);
+                }
+            }, (err) => {
+                console.log(`err`, err);
+            });
     }
 
     onCancel(): void {

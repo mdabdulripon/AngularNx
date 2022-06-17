@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IOrder, OrdersService } from '@alligatorspace/orders';
+import { Subject, takeUntil } from 'rxjs';
 
 const ORDER_STATUS = {
 	0: {
@@ -29,36 +30,45 @@ const ORDER_STATUS = {
   selector: 'admin-orders-list',
   templateUrl: './orders-list.component.html'
 })
-export class OrdersListComponent implements OnInit {
-
+export class OrdersListComponent implements OnInit, OnDestroy {
 	orderStatus = ORDER_STATUS;
 	displayedColumns: string[] = ['user', 'totalPrice', 'dateOrder', 'status', 'action'];
 	dataSource: IOrder[] = [];
+	endSubs$: Subject<any> = new Subject();
 
 	constructor(
 		private ordersService: OrdersService,
 		private router: Router) {}
-
+	
 	ngOnInit(): void {
 		this.getOrders();
 	}
 
+	ngOnDestroy(): void {
+		this.endSubs$.complete();
+		this.endSubs$.unsubscribe();
+	}
+
 	getOrders() {
-		this.ordersService.getOrders().subscribe(res => {
-			if (res) {
-				this.dataSource = res;
-			}
-		});
+		this.ordersService.getOrders()
+			.pipe(takeUntil(this.endSubs$))
+			.subscribe(res => {
+				if (res) {
+					this.dataSource = res;
+				}
+			});
 	}
 
 	// TODO: Add confirmation message in the future
 	deleteOrder(orderId: string) {
-		this.ordersService.deleteOrder(orderId).subscribe(res => {
-			if(res) {
-				this.getOrders();
-				console.log(`successfully deleted`);
-			}
-		})
+		this.ordersService.deleteOrder(orderId)
+			.pipe(takeUntil(this.endSubs$))
+			.subscribe(res => {
+				if(res) {
+					this.getOrders();
+					console.log(`successfully deleted`);
+				}
+			})
 	}
 
 	editOrder(orderId: string) {
