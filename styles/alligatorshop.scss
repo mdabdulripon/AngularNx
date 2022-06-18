@@ -12,7 +12,7 @@
 // Pages 
 @import './apps/shop/pages/home-page.scss';
 @import './apps/shop/pages/products-list.scss';
-@import './apps/shop/pages/products-itme.scss';
+@import './apps/shop/pages/products-item.scss';
 
 // Shared 
 @import './apps/shop/shared/header.scss';
@@ -22,10 +22,13 @@
 @import './libs/ui/ui.scss';
 @import './libs/products/product.search.scss';
 
-
-
-
-
+// todo: move this in saperate file
+@media (min-width: 992px) {
+    .navbar {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        background-color: #fff;
+    }
+}
 
 .masthead {
     padding-top: 10rem;
