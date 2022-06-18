@@ -1,2 +1,2 @@
-export * from './lib/ui';
+// Module
 export * from './lib/ui.module';

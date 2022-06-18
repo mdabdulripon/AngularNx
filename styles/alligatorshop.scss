@@ -3,6 +3,7 @@
 @import './base/fonts.scss';
 @import './base/mixins.scss';
 @import './base/configure.scss';
+@import './base/spacing.scss';
 
 // Third party 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
@@ -11,6 +12,7 @@
 // Pages 
 @import './apps/shop/pages/home-page.scss';
 @import './apps/shop/pages/products-list.scss';
+@import './apps/shop/pages/products-itme.scss';
 
 // Shared 
 @import './apps/shop/shared/header.scss';

@@ -12,7 +12,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
-import { CategoriesService, ProductsService } from '@alligatorspace/products';
+import { CategoriesService, ProductsModule, ProductsService } from '@alligatorspace/products';
 import { ProductFormComponent } from './pages/products/product-form/product-form.component';
 import { ProductListComponent } from './pages/products/product-list/product-list.component';
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
@@ -88,11 +88,12 @@ const MatModules = [
         AppRoutingModule,
         StoreModule.forRoot({}, {}),
         UsersModule,
+        ProductsModule,
         ...MatModules
     ],
     providers: [
         CategoriesService, 
-        ProductsService, 
+        // ProductsService, 
         UsersService,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
     ],

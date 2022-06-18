@@ -33,6 +33,10 @@ export class ProductsService {
     return this.http.delete<any>(`${this.baseUrl}/${productId}`);
   }
 
+  getFeaturedProducts(count: number): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`${this.baseUrl}/get/featured/${count}`)
+  }
+
   getProductsCount(): Observable<number> {
     return this.http
       .get<number>(`${this.baseUrl}/get/count`)

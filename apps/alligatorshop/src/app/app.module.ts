@@ -9,6 +9,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@alligatorspace/ui';
 import { ProductsModule } from '@alligatorspace/products';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
     { path: '', component: HomePageComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     imports: [
         BrowserModule, 
         RouterModule.forRoot(routes),
+        HttpClientModule,
         UiModule,
         ProductsModule
     ],
