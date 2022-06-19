@@ -25,6 +25,12 @@ table {
 
 
 
+// reset.scss
+
+.material-icons-outlined {
+    line-height: inherit !important;
+}
+
 
 
 
@@ -95,5 +101,11 @@ table {
     &-lg {
         padding: 10px 50px !important;
         font-size: 18px;
+    }
+}
+
+.border-radius {
+    &-50p {
+        border-radius: 50%; 
     }
 }

@@ -1,0 +1,29 @@
+<div class="product-page mt-20" *ngIf="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <!-- gallery -->
+                <ui-image-gallery [images]="product.images"></ui-image-gallery>
+            </div>
+            <div class="col-6">
+                <p class="product-name">{{ product.name }}</p>
+                <p class="product-desc">{{ product.description }}</p>
+                <!-- TODO: Add rating later -->
+                <p class="product-price">
+                    {{ product.price | currency }}
+                    <!-- Todo: have price before if the product on sale -->
+                </p>
+                <div class="product-quantity">
+                    <button class="btn btn-primary border-radius-50p mr-10"><i class="material-icons-outlined">add</i></button>
+                    <span class="fs-15"> {{ quantity }} </span>
+                    <button class="btn btn-danger border-radius-50p ml-10"><i class="material-icons-outlined">remove</i></button>
+                </div>
+
+                <div class="product-action mt-20">
+                    <button class="btn btn-primary mr-20">Buy Now</button>
+                    <button class="btn btn-primary">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
