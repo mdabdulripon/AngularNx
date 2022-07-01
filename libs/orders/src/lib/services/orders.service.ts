@@ -9,6 +9,7 @@ import { IOrder } from '../models/order';
 })
 export class OrdersService {
   private baseUrl = environment.baseUrl + 'orders';
+  private productURL = environment.baseUrl + 'products';
 
   constructor(private http: HttpClient) { }
 
@@ -42,5 +43,9 @@ export class OrdersService {
     return this.http
       .get<number>(`${this.baseUrl}/get/totalsales`)
       .pipe(map((obj: any) => obj.totalsales));
+  }
+
+  getProduct(productId: string) : Observable<any>{
+    return this.http.get<any>(`${this.productURL}/${productId}`);
   }
 }

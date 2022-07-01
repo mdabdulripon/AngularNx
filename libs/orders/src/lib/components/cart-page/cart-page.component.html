@@ -1,0 +1,41 @@
+<div class="cart-page mt-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <button routerLink="/products" class="btn btn-primary d-block mb-20">Continue Shopping</button>
+                <h5>My Cart: {{ cartCount }} item(s)</h5>
+                <div class="cart-item" *ngFor="let cartItem of cartItemDetails">
+                    <div class="row">
+                        <div class="col-md-3 cart-item__image">
+                            <img [src]="cartItem.product.image" alt="" />
+                        </div>
+                        <div class="col-md-6">
+                            <div class="cart-item__name">{{ cartItem.product.name }}</div>
+                            <div class="cart-item__price-quantity">
+                                <span class="price">{{ cartItem.product.price | currency }}</span>
+                                <i class="material-icons-outlined ml-5 mr-5">close</i>
+                                <span class="quantity">{{ cartItem.quantity }}</span>
+                            </div>
+                            <div class="cart-item__remove mb-20">
+                                <i class="material-icons-outlined" (click)="deleteCartItem(cartItem)">delete</i>
+                            </div>
+                        </div>
+                        <div class="col-md-3 cart-item__subtotal">
+                            <div class="product-quantity">
+                                <button class="btn btn-primary border-radius-50p mr-10"><i class="material-icons-outlined">add</i></button>
+                                <span class="fs-15"> {{ cartItem.quantity }} </span>
+                                <button class="btn btn-danger border-radius-50p ml-10"><i class="material-icons-outlined">remove</i></button>
+                            </div>
+                            <div class="cart-item__subtotal-value">
+                                Subtotal: <span>{{ cartItem.product.price * cartItem.quantity | currency }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <orders-order-summary></orders-order-summary>
+            </div>
+        </div>
+    </div>
+</div>

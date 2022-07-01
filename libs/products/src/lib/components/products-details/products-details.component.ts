@@ -10,7 +10,7 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductsDetailsComponent implements OnInit, OnDestroy {
     product!: IProduct;
-    quantity = 0;
+    quantity = 1;
     endSubs$: Subject<any> = new Subject();
 
     constructor(private productsService: ProductsService, private route: ActivatedRoute) {}

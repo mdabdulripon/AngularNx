@@ -5,7 +5,7 @@
     "scripts": {
         "ng": "nx",
         "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
-        "start": "concurrently \"nx run alligatorshop:serve\" \"nx run admin:serve --port 4100\"",
+        "start": "concurrently \"nx run alligatorshop:serve -o --port 4200\" \"nx run admin:serve -o --port 4100\"",
         "build": "nx build",
         "test": "nx test"
     },
@@ -27,6 +27,7 @@
         "concurrently": "^7.2.2",
         "i18n-iso-countries": "^7.4.0",
         "material-icons": "^1.11.1",
+        "moment": "^2.29.3",
         "rxjs": "~7.4.0",
         "tslib": "^2.0.0",
         "zone.js": "~0.11.4"

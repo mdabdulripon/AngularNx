@@ -9,6 +9,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@alligatorspace/ui';
 import { ProductsModule } from '@alligatorspace/products';
 import { HttpClientModule } from '@angular/common/http';
+import { OrdersModule } from '@alligatorspace/orders';
 
 const routes: Routes = [
     { path: '', component: HomePageComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
         RouterModule.forRoot(routes),
         HttpClientModule,
         UiModule,
-        ProductsModule
+        ProductsModule,
+        OrdersModule
     ],
     providers: [],
     bootstrap: [AppComponent]

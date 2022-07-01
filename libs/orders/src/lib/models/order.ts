@@ -3,15 +3,15 @@ import { IOrderItem } from "./orderItem";
 
 export interface IOrder {
     id?: string;
-    orderItem?: IOrderItem;
-    shippingAddress1?: string; // TODO changes the properties 
+    orderItems?: IOrderItem[];
+    shippingAddress1?: string;
     shippingAddress2?: string;
     city?: string;
-    state?: string;
     zip?: string;
+    country?: string;
     phone?: string;
-    status?: string;
+    status?: number;
     totalPrice?: string;
-    user?: IUser;
-    dateOrder?: string;         // TODO changes this property to orderDate
+    user?: any;
+    dateOrdered?: string;
 }

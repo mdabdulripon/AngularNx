@@ -4,7 +4,10 @@
         <p class="name">{{ product.name | titlecase }}</p>
         <div class="action-item">
             <span class="action-item_price">{{ product.price | currency }}</span>
-            <button class="action-item_cart"><i class="material-icons-outlined">shopping_cart</i></button>
+            <button 
+                class="action-item_cart"
+                (click)="addProductToCart()">
+                <i class="material-icons-outlined">shopping_cart</i></button>
         </div>
     </div>
 </div>

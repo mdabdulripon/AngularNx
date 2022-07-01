@@ -1,0 +1,33 @@
+.cart-page {
+    // max-height: 500px;
+    .cart-item {
+        background-color: #fff;
+        padding: 20px;
+        &__image {
+            img {
+                max-width: 100%;
+                height: 100px;
+            }
+        }
+        &__name {
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+        &__price {
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+        &__quantity {
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+        &__subtotal {
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+        // &__remove {}
+    }
+}
+
+
+
