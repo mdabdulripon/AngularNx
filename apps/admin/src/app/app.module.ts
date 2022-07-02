@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -88,6 +90,7 @@ const MatModules = [
         ReactiveFormsModule,
         AppRoutingModule,
         StoreModule.forRoot({}, {}),
+        EffectsModule.forRoot([]),
         UsersModule,
         ProductsModule,
         OrdersModule,

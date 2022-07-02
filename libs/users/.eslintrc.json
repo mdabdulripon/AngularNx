@@ -7,7 +7,11 @@
             "rules": {
                 "no-empty-function": "off",
                 "@typescript-eslint/no-empty-function": "off",
-                "@typescript-eslint/no-non-null-assertion": "off"
+                "@typescript-eslint/no-non-null-assertion": "off",
+                "ngrx/select-style": "off",
+                "ngrx/on-function-explicit-return-type": "off",
+                "ngrx/prefix-selectors-with-select": "off",
+                "ngrx/prefer-one-generic-in-create-for-feature-selector": "off"
             }
         },
         {

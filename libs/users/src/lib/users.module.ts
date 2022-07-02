@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router'
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './pages/login/login.component';
 
-// TODO: Move this to a separate module  
+// TODO: Move this to a separate module
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,7 +24,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import * as fromUsers from './state/users.reducer';
+import { UsersEffects } from './state/users.effects';
+import { UsersFacade } from './state/users.facade';
 
 const MatModules = [
     MatSliderModule,
@@ -46,19 +52,19 @@ const MatModules = [
     MatAutocompleteModule
 ];
 
-
-const routes: Routes = [
-    { path: 'login', component: LoginComponent }
-]
+const routes: Routes = [{ path: 'login', component: LoginComponent }];
 
 @NgModule({
     imports: [
-        CommonModule, 
+        CommonModule,
         RouterModule.forChild(routes),
         MatModules,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        StoreModule.forFeature(fromUsers.USERS_FEATURE_KEY, fromUsers.reducer),
+        EffectsModule.forFeature([UsersEffects])
     ],
     declarations: [LoginComponent],
-    exports: [LoginComponent]
+    exports: [LoginComponent],
+    providers: [UsersFacade]
 })
 export class UsersModule {}

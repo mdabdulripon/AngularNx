@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { map, Observable } from 'rxjs';
 import { IUser } from '../models/user';
+import { UsersFacade } from '../state/users.facade';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class UsersService {
 
   baseUrl = environment.baseUrl + 'users';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userFacade: UsersFacade) {
     // countriesLib.registerLocale(require('i18n-iso-countries/langs/en.json'));
   }
 
@@ -53,4 +54,16 @@ export class UsersService {
   // getCountry(countryKey: string): string {
   //   return countriesLib.getName(countryKey, 'en');
   // }
+
+  initAppSession() { 
+    this.userFacade.buildUserSession();
+  }
+
+  observeCurrentUser() {
+    return this.userFacade.currentUser$;
+  }
+
+  isCurrentUserAuthenticated() {
+    return this.userFacade.currentUser$;
+  }
 }

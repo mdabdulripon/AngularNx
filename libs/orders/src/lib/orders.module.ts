@@ -29,6 +29,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { AuthGuard, UsersModule } from '@alligatorspace/users';
 
 const MatModules = [
     MatSliderModule,
@@ -52,9 +53,19 @@ const MatModules = [
 ];
 
 const routes: Routes = [
-    { path: 'cart', component: CartPageComponent },
-    { path: 'checkout', component: CheckoutPageComponent },
-    { path: 'confirm', component: ConfirmationComponent }
+    { 
+        path: 'cart', 
+        component: CartPageComponent 
+    },
+    { 
+        path: 'checkout',
+        canActivate: [AuthGuard],
+        component: CheckoutPageComponent
+    },
+    { 
+        path: 'confirm', 
+        component: ConfirmationComponent 
+    }
 ];
 
 @NgModule({
@@ -63,6 +74,7 @@ const routes: Routes = [
         BrowserAnimationsModule,
         ReactiveFormsModule,
         RouterModule.forChild(routes),
+        UsersModule,
         ...MatModules
     ],
     declarations: [

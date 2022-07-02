@@ -1,5 +1,5 @@
 import { UsersService } from '@alligatorspace/users';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ICart } from '../../models/cart';
@@ -8,6 +8,7 @@ import { IOrderItem } from '../../models/orderItem';
 import { CartService } from '../../services/cart.service';
 import { OrdersService } from '../../services/orders.service';
 import * as countriesLib from 'i18n-iso-countries';
+import { Subject, takeUntil } from 'rxjs';
 
 declare const require;
 
@@ -16,12 +17,13 @@ declare const require;
     templateUrl: './checkout-page.component.html',
     styles: []
 })
-export class CheckoutPageComponent implements OnInit {
+export class CheckoutPageComponent implements OnInit, OnDestroy {
     form: FormGroup;
     isSubmitted = false;
     orderItems: IOrderItem[] = [];
-    userId: string;
+    userId?: string;
     countries: { id: string; name: string; }[];
+    unsubscribe$: Subject<any> = new Subject();
     
     get checkoutForm() {
         return this.form.controls;
@@ -29,16 +31,22 @@ export class CheckoutPageComponent implements OnInit {
     
     constructor(
         private router: Router,
-        private usersService: UsersService,
         private formBuilder: FormBuilder,
         private cartService: CartService,
-        private ordersService: OrdersService
+        private ordersService: OrdersService,
+        private usersService: UsersService
     ) {}
-    
+   
     ngOnInit(): void {
         this._initCheckoutForm();
+        this.autoFillUserData();
         this._getCartItems();
         this._getCountries();
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe$.complete();
+        this.unsubscribe$.unsubscribe();
     }
     
     private _initCheckoutForm() {
@@ -51,6 +59,24 @@ export class CheckoutPageComponent implements OnInit {
             zip: ['', Validators.required],
             apartment: [''],
             street: ['', Validators.required]
+        });
+    }
+
+    private autoFillUserData() {
+        this.usersService.observeCurrentUser()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((user) => {
+                if (user) {
+                    this.userId = user.id;
+                    this.checkoutForm['name'].setValue(user.name);
+                    this.checkoutForm['email'].setValue(user.email);
+                    this.checkoutForm['phone'].setValue(user.phone);
+                    this.checkoutForm['city'].setValue(user.city);
+                    this.checkoutForm['street'].setValue(user.street);
+                    this.checkoutForm['country'].setValue(user.country);
+                    this.checkoutForm['zip'].setValue(user.zip);
+                    this.checkoutForm['apartment'].setValue(user.apartment);
+                }
         });
     }
 
@@ -101,7 +127,6 @@ export class CheckoutPageComponent implements OnInit {
             this.cartService.emptyCart();
             this.router.navigate(['/confirm']);
         });
-      }
-    
+    }
      
 }
